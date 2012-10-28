@@ -74,7 +74,8 @@ class SecondPassVisitor(ast_template.Visitor):
         self.semicolon=True
 
         self.writef('#include "NXCDefs.h"\n')
-        self.writef(open(os.path.join(pynxc_root,"MyDefs.h"),'rt').read())
+        if os.path.exists("MyDefs.h"):
+            self.writef(open("MyDefs.h",'rt').read())
             
         
         for d in fv.defines:
